@@ -2,9 +2,16 @@ package org.usfirst.frc.team4765.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Servo;
-import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
+import org.usfirst.frc.team4765.robot.commands.Auton;
+import org.usfirst.frc.team4765.robot.commands.MoveBackward;
+import org.usfirst.frc.team4765.robot.commands.MoveForward;
+import org.usfirst.frc.team4765.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4765.robot.subsystems.FourBar;
+import org.usfirst.frc.team4765.robot.subsystems.Intake;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -15,68 +22,67 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Robot extends IterativeRobot
 {
-	RobotDrive myRobot;
-	Joystick stick;
-	int autoLoopCounter;
+	// TODO: delete this comment
+	// Static Instances of subsystems
+	public static final Joystick joystick = new Joystick(0);
+	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final FourBar fourBar = new FourBar();
+	public static final Intake intake = new Intake();
+	
+	public Command auton;
+	
 
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
-	public void robotInit()
-	{
-		myRobot = new RobotDrive(0, 1);
-		stick = new Joystick(0);
-	}
-
-	/**
-	 * This function is run once each time the robot enters autonomous mode
-	 */
+	// Secondary handlers
+	public static OI oi;
+	
+	@Override
 	public void autonomousInit()
 	{
-		autoLoopCounter = 0;
+		auton = new Auton(readAutonConfig());
+		Scheduler.getInstance().add(auton);
+		
+		
+		System.out.println(joystick.getThrottle());
 	}
 
-	/**
-	 * This function is called periodically during autonomous
-	 */
+	@Override
 	public void autonomousPeriodic()
 	{
-		if (autoLoopCounter < 100) // Check if we've completed 100 loops
-									// (approximately 2 seconds)
-		{
-			myRobot.drive(-0.5, 0.0); // drive forwards half speed
-			autoLoopCounter++;
-		} 
-		else 
-		{
-			myRobot.drive(0.0, 0.0); // stop robot
-		}
+		Scheduler.getInstance().run();
 	}
 
-	/**
-	 * This function is called once each time the robot enters tele-operated
-	 * mode
-	 */
+	@Override
+	public void disabledPeriodic()
+	{
+		Scheduler.getInstance().run();
+	}
+
+	@Override
+	public void robotInit()
+	{
+		oi = new OI(joystick);
+	}
+
+	@Override
 	public void teleopInit()
 	{
 	}
 
-	/**
-	 * This function is called periodically during operator control
-	 */
+	@Override
 	public void teleopPeriodic()
 	{
-		double speed = (stick.getThrottle()+1.0)/2.0;
-		myRobot.arcadeDrive(stick.getY()*speed, stick.getZ()*speed, true);
+		Scheduler.getInstance().run();
+		//System.out.println("teleop");
 	}
 
-	/**
-	 * This function is called periodically during test mode
-	 */
+	@Override
 	public void testPeriodic()
 	{
 		LiveWindow.run();
 	}
-
+	
+	public int readAutonConfig()
+	{
+		return 0;
+	}
 }
