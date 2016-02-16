@@ -27,6 +27,18 @@ public class Init extends Command
 		Robot.driveTrain.motor2.setFeedbackDevice(null);
 		Robot.driveTrain.motor3.setFeedbackDevice(null);
 		Robot.driveTrain.motor4.setFeedbackDevice(null);
+		
+		Robot.fourBar.wench.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
+		Robot.fourBar.wench.setControlMode(1); // position
+		
+		Robot.driveTrain.motor1.setControlMode(0);
+		Robot.driveTrain.motor2.setControlMode(0);
+		
+		Robot.driveTrain.motor3.setControlMode(5);
+		Robot.driveTrain.motor4.setControlMode(5);
+		
+		Robot.driveTrain.motor3.set(1);
+		Robot.driveTrain.motor4.set(2);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -37,7 +49,7 @@ public class Init extends Command
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished()
 	{
-		return false;
+		return true;
 	}
 
 	// Called once after isFinished returns true

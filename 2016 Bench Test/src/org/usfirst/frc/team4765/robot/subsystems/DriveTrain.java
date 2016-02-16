@@ -12,12 +12,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem
 {
-	Joystick joystick = Robot.joystick;
 	// odds on the left, evens are on the right 
-	public CANTalon motor1; //= new CANTalon(1); // front left
-	public CANTalon motor2; //= new CANTalon(2); // front right
-	public CANTalon motor3; //= new CANTalon(3); // rear left
-	public CANTalon motor4; //= new CANTalon(4); // rear right
+	public CANTalon motor1 = new CANTalon(1); // front left, leader
+	public CANTalon motor2 = new CANTalon(2); // front right, leader
+	public CANTalon motor3 = new CANTalon(3); // rear left, follower
+	public CANTalon motor4 = new CANTalon(4); // rear right, follower
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -27,7 +26,7 @@ public class DriveTrain extends Subsystem
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 
-		//setDefaultCommand(new Drive());
+		setDefaultCommand(new Drive());
 	}
 	// roborio in usb
 	// attach CAN bus
@@ -91,22 +90,18 @@ public class DriveTrain extends Subsystem
 
 	public void move()
 	{
-		double throttle = (joystick.getThrottle() + 1.0) / 2.0;
-		double[] motorSpeeds = arcadeDriveMath(joystick.getY(), joystick.getZ());
+		double throttle = (Robot.joystick.getThrottle() + 1.0) / 2.0;
+		double[] motorSpeeds = arcadeDriveMath(Robot.joystick.getZ(), Robot.joystick.getY());
 		double leftMotorSpeed = motorSpeeds[0];
 		double rightMotorSpeed = motorSpeeds[1];
 		
 		motor1.set(leftMotorSpeed * throttle);
 		motor2.set(rightMotorSpeed * throttle);
-		motor3.set(leftMotorSpeed * throttle);
-		motor4.set(rightMotorSpeed * throttle);
 	}
 
 	public void stop()
 	{
 		motor1.set(0);
 		motor2.set(0);
-		motor3.set(0);
-		motor4.set(0);
 	}
 }

@@ -28,8 +28,36 @@ public class Auton extends CommandGroup
 		// arm.
 		switch (setting)
 		{
+			case 0:
+				System.out.println("0");
+				break;
+			
 			case 1:
 				System.out.println("case 1");
+				break;
+			
+			case 7:
+				System.out.println("case 7");
+				break;
+			
+			case 8:
+				System.out.println("case 8");
+				break;
+				
+			case 9:
+				System.out.println("case 9");
+				break;
+				
+			case 10:
+				System.out.println("case 10");
+				break;
+				
+			case 11:
+				System.out.println("case 11");
+				break;
+				
+			case 12:
+				System.out.println("case 12");
 				break;
 			
 			default:

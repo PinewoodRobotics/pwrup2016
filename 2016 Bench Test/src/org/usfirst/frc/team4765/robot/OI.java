@@ -1,5 +1,8 @@
 package org.usfirst.frc.team4765.robot;
 
+import org.usfirst.frc.team4765.robot.commands.FourBarToFullyRetracted;
+import org.usfirst.frc.team4765.robot.commands.FourBarToLowBar;
+import org.usfirst.frc.team4765.robot.commands.FourBarToLowest;
 import org.usfirst.frc.team4765.robot.commands.MoveForward;
 import org.usfirst.frc.team4765.robot.commands.SafeMoveForward;
 
@@ -14,16 +17,29 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI
 {
-	//JoystickButton moveForwardButton;
-	//JoystickButton safeMoveForwardButton;
+	//JoystickButton moveForwardBtn;
+	//JoystickButton safeMoveForwardBtn;
+	JoystickButton fourBarToLowestBtn;
+	JoystickButton fourBarToLowBarBtn;
+	JoystickButton fourBarToFullyRetractedBtn;
 	
 	public OI(GenericHID... joysticks)
 	{
-		//moveForwardButton = new JoystickButton(joysticks[0], 9);
-		//moveForwardButton.whenPressed(new MoveForward());
+		//moveForwardBtn = new JoystickButton(joysticks[0], 9);
+		//moveForwardBtn.whenPressed(new MoveForward());
 		
-		//safeMoveForwardButton = new JoystickButton(joysticks[0], 10);
-		//safeMoveForwardButton.whenPressed(new SafeMoveForward());
+		//safeMoveForwardBtn = new JoystickButton(joysticks[0], 10);
+		//safeMoveForwardBtn.whenPressed(new SafeMoveForward());
+		
+		fourBarToLowestBtn = new JoystickButton(joysticks[1], 1);
+		fourBarToLowestBtn.whenPressed(new FourBarToLowest());
+		
+		fourBarToLowBarBtn = new JoystickButton(joysticks[1], 2);
+		fourBarToLowBarBtn.whenPressed(new FourBarToLowBar());
+		
+		fourBarToFullyRetractedBtn = new JoystickButton(joysticks[1], 3);
+		fourBarToFullyRetractedBtn.whenPressed(new FourBarToFullyRetracted());
+		
 	}
 	 
 	// // CREATING BUTTONS
