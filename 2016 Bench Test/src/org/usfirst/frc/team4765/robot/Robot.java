@@ -32,6 +32,9 @@ public class Robot extends IterativeRobot
 	public static final Joystick joystick = new Joystick(0);
 	public static final Joystick panelJoy = new Joystick(1);
 	
+	public static final JoystickButton trigger = new JoystickButton(joystick, 1);
+	public static final JoystickButton thumbBtn = new JoystickButton(joystick, 2);
+	
 	public static final JoystickButton panelBtn7  = new JoystickButton(panelJoy, 7);
 	public static final JoystickButton panelBtn8  = new JoystickButton(panelJoy, 8);
 	public static final JoystickButton panelBtn9  = new JoystickButton(panelJoy, 9);
@@ -39,8 +42,16 @@ public class Robot extends IterativeRobot
 	public static final JoystickButton panelBtn11 = new JoystickButton(panelJoy, 11);
 	public static final JoystickButton panelBtn12 = new JoystickButton(panelJoy, 12);
 	
+	public static boolean hasBeenReset = false;
 	public Command auton;
 	public Command init;
+	
+	public static int intakeEncPosition = 8866;
+	
+	public static int reading_lowBar = 6393;
+	
+	// 660, should be 200
+	
 
 	// Secondary handlers
 	public static OI oi;
@@ -83,7 +94,7 @@ public class Robot extends IterativeRobot
 	public void teleopPeriodic()
 	{
 		Scheduler.getInstance().run();
-		//System.out.println("teleop");
+		System.out.println(Robot.fourBar.wench.getEncPosition());
 	}
 
 	@Override

@@ -28,6 +28,8 @@ public class Init extends Command
 		Robot.driveTrain.motor3.setFeedbackDevice(null);
 		Robot.driveTrain.motor4.setFeedbackDevice(null);
 		
+		Robot.intake.intakeMotor.setFeedbackDevice(null);
+		
 		Robot.fourBar.wench.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
 		Robot.fourBar.wench.setControlMode(1); // position
 		
@@ -39,6 +41,7 @@ public class Init extends Command
 		
 		Robot.driveTrain.motor3.set(1);
 		Robot.driveTrain.motor4.set(2);
+		
 	}
 
 	// Called repeatedly when this Command is scheduled to run

@@ -1,10 +1,15 @@
 package org.usfirst.frc.team4765.robot;
 
 import org.usfirst.frc.team4765.robot.commands.FourBarToFullyRetracted;
+import org.usfirst.frc.team4765.robot.commands.FourBarToIntake;
 import org.usfirst.frc.team4765.robot.commands.FourBarToLowBar;
 import org.usfirst.frc.team4765.robot.commands.FourBarToLowest;
+import org.usfirst.frc.team4765.robot.commands.FourBarToThrottle;
 import org.usfirst.frc.team4765.robot.commands.MoveForward;
+import org.usfirst.frc.team4765.robot.commands.ResetFourBar;
 import org.usfirst.frc.team4765.robot.commands.SafeMoveForward;
+import org.usfirst.frc.team4765.robot.commands.ejectBall;
+import org.usfirst.frc.team4765.robot.commands.ingestBall;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
@@ -22,6 +27,9 @@ public class OI
 	JoystickButton fourBarToLowestBtn;
 	JoystickButton fourBarToLowBarBtn;
 	JoystickButton fourBarToFullyRetractedBtn;
+	JoystickButton fourBarResetBtn;
+	JoystickButton fourBarToIntakeBtn;
+	JoystickButton fourBarToThrottleBtn;
 	
 	public OI(GenericHID... joysticks)
 	{
@@ -39,6 +47,18 @@ public class OI
 		
 		fourBarToFullyRetractedBtn = new JoystickButton(joysticks[1], 3);
 		fourBarToFullyRetractedBtn.whenPressed(new FourBarToFullyRetracted());
+		
+		fourBarResetBtn = new JoystickButton(joysticks[0], 8);
+		fourBarResetBtn.whenPressed(new ResetFourBar());
+		
+		fourBarToIntakeBtn = new JoystickButton(joysticks[0], 7);
+		fourBarToIntakeBtn.whenPressed(new FourBarToIntake());
+		
+		fourBarToThrottleBtn = new JoystickButton(joysticks[0], 9);
+		fourBarToThrottleBtn.whenPressed(new FourBarToThrottle());
+		
+		Robot.trigger.whenPressed(new ingestBall());
+		Robot.thumbBtn.whenPressed(new ejectBall());
 		
 	}
 	 
