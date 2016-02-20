@@ -1,11 +1,12 @@
 package org.usfirst.frc.team4765.robot;
 
+import org.usfirst.frc.team4765.robot.commands.CaptureBallAndRetract;
 import org.usfirst.frc.team4765.robot.commands.FourBarToFullyRetracted;
 import org.usfirst.frc.team4765.robot.commands.FourBarToIntake;
 import org.usfirst.frc.team4765.robot.commands.FourBarToLowBar;
 import org.usfirst.frc.team4765.robot.commands.FourBarToLowest;
 import org.usfirst.frc.team4765.robot.commands.FourBarToThrottle;
-import org.usfirst.frc.team4765.robot.commands.MoveForward;
+import org.usfirst.frc.team4765.robot.commands.MoveForwardTime;
 import org.usfirst.frc.team4765.robot.commands.ResetFourBar;
 import org.usfirst.frc.team4765.robot.commands.SafeMoveForward;
 import org.usfirst.frc.team4765.robot.commands.ejectBall;
@@ -57,7 +58,7 @@ public class OI
 		fourBarToThrottleBtn = new JoystickButton(joysticks[0], 9);
 		fourBarToThrottleBtn.whenPressed(new FourBarToThrottle());
 		
-		Robot.trigger.whenPressed(new ingestBall());
+		Robot.trigger.whenPressed(new CaptureBallAndRetract());
 		Robot.thumbBtn.whenPressed(new ejectBall());
 		
 	}

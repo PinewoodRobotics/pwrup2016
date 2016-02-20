@@ -18,6 +18,7 @@ public class FourBarToIntake extends Command
 	// Called just before this Command runs the first time
 	protected void initialize()
 	{
+		System.out.println(System.currentTimeMillis());
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -25,7 +26,7 @@ public class FourBarToIntake extends Command
 	{
 		if(Robot.hasBeenReset)
 		{
-			Robot.fourBar.wench.setSetpoint(Robot.intakeEncPosition);
+			Robot.fourBar.wench.setSetpoint(Robot.intakeEncPos);
 		}
 	}
 

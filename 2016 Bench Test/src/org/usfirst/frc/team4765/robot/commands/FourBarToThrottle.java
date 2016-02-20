@@ -26,7 +26,7 @@ public class FourBarToThrottle extends Command
 	{
 		if(Robot.hasBeenReset)
 		{
-			Robot.fourBar.wench.setSetpoint((Robot.joystick.getThrottle() + 1) * 10000);
+			Robot.fourBar.wench.setSetpoint( ((Robot.joystick.getThrottle() + 1) / 2) * 15400);
 		}
 	}
 

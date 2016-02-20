@@ -1,14 +1,17 @@
 package org.usfirst.frc.team4765.robot.commands;
 
+import org.usfirst.frc.team4765.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
  */
-public class Auton extends CommandGroup
+public class CaptureBallAndRetract extends CommandGroup
 {
 
-	public Auton(int setting)
+	public CaptureBallAndRetract()
 	{
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
@@ -26,44 +29,11 @@ public class Auton extends CommandGroup
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		switch (setting)
-		{
-			case 0:
-				System.out.println("0");
-				break;
-			
-			case 1:
-				System.out.println("case 1");
-				break;
-			
-			case 7:
-				System.out.println("case 7");
-				addSequential(new MoveForwardTime(2.0));
-				break;
-			
-			case 8:
-				System.out.println("case 8");
-				break;
-				
-			case 9:
-				System.out.println("case 9");
-				break;
-				
-			case 10:
-				System.out.println("case 10");
-				break;
-				
-			case 11:
-				System.out.println("case 11");
-				break;
-				
-			case 12:
-				System.out.println("case 12");
-				break;
-			
-			default:
-				System.out.println("default");
-				break;
-		}
+		addSequential(new FourBarToIntake());
+		addSequential(new IngestUntilBallCaptured());
+		addParallel(new SetIntakeMotor(-0.6));
+		addSequential(new FourBarToCapturedBall());
+		addSequential(new Wait(0.5));
+		addSequential(new SetIntakeMotor(0.0));
 	}
 }

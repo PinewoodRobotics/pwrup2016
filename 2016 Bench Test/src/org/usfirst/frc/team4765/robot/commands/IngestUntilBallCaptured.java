@@ -2,46 +2,50 @@ package org.usfirst.frc.team4765.robot.commands;
 
 import org.usfirst.frc.team4765.robot.Robot;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class FourBarToLowBar extends Command
+public class IngestUntilBallCaptured extends Command
 {
+	boolean currentLogged = false;
+	double startOfStall;
 
-	public FourBarToLowBar()
+	public IngestUntilBallCaptured()
 	{
-		requires(Robot.fourBar);
+		// Use requires() here to declare subsystem dependencies
+		requires(Robot.intake);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize()
 	{
-		System.out.println("executing FourBarToLowBar");
+		System.out.println(System.currentTimeMillis());
+		System.out.println("IngestUntilBallCaptured");
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute()
-	{
-		Robot.fourBar.wench.set(Robot.lowBarEncPos);
+	{	
+		Robot.intake.intakeMotor.set(-0.5);
+		if(Robot.intake.intakeMotor.getOutputCurrent() < 7.5)
+		{
+			startOfStall = timeSinceInitialized();
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished()
 	{
-		return true;
+		return ((Math.abs(timeSinceInitialized() - startOfStall) > 0.75));
 	}
 
 	// Called once after isFinished returns true
 	protected void end()
 	{
-		// TODO: write this
-	}
-	
-	public boolean isInterruptible()
-	{
-		return true;
+		Robot.intake.intakeMotor.set(-0.6);
 	}
 
 	// Called when another command which requires one or more of the same

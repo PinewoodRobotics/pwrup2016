@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ResetFourBar extends Command
 {
-
+	
 	public ResetFourBar()
 	{
 		requires(Robot.fourBar);
@@ -22,27 +22,27 @@ public class ResetFourBar extends Command
 		Robot.fourBar.wench.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 	}
 
-	// Called repeatedly when this Command is scheduled to run
+	// periodic
 	protected void execute()
 	{
 		Robot.fourBar.wench.set(-0.4);
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished()
 	{
-		if(Robot.fourBar.limitSwitch.get())
+		if((timeSinceInitialized() > 2.0) || (Robot.fourBar.limitSwitch.get()))
 		{
 			Robot.fourBar.wench.setEncPosition(0);
 			System.out.println("LIMIT HIT");
 			Robot.fourBar.wench.set(0); // still in percentVBus
-			System.out.println("before reset: " + Robot.fourBar.wench.getSetpoint());
 			Robot.hasBeenReset = true;
 			Robot.fourBar.wench.changeControlMode(CANTalon.TalonControlMode.Position);
 			Robot.fourBar.wench.setPID(0.2, 0, 0);   
 			Robot.fourBar.wench.enableControl();
 			Robot.fourBar.wench.setSetpoint(200);
-			System.out.println("after reset: " + Robot.fourBar.wench.getSetpoint());
+			Robot.fourBar.wench.setVoltageRampRate(6);
+			Robot.fourBar.wench.configNominalOutputVoltage(+0f, -0f);
+			Robot.fourBar.wench.configPeakOutputVoltage(+2f, -8f);
 			return true;
 		}
 		else
@@ -61,9 +61,8 @@ public class ResetFourBar extends Command
 		return false;
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
 	protected void interrupted()
 	{
+		
 	}
 }

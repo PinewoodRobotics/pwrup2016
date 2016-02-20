@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4765.robot.commands.Auton;
 import org.usfirst.frc.team4765.robot.commands.Init;
 import org.usfirst.frc.team4765.robot.commands.MoveBackward;
-import org.usfirst.frc.team4765.robot.commands.MoveForward;
+import org.usfirst.frc.team4765.robot.commands.MoveForwardTime;
 import org.usfirst.frc.team4765.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4765.robot.subsystems.FourBar;
 import org.usfirst.frc.team4765.robot.subsystems.Intake;
@@ -46,9 +46,9 @@ public class Robot extends IterativeRobot
 	public Command auton;
 	public Command init;
 	
-	public static int intakeEncPosition = 8866;
-	
-	public static int reading_lowBar = 6393;
+	public static int intakeEncPos = 9100;
+	public static int lowBarEncPos = 6393;
+	public static int capturedBallEncPos = 4900;
 	
 	// 660, should be 200
 	
@@ -94,7 +94,8 @@ public class Robot extends IterativeRobot
 	public void teleopPeriodic()
 	{
 		Scheduler.getInstance().run();
-		System.out.println(Robot.fourBar.wench.getEncPosition());
+		//System.out.println(Robot.fourBar.wench.getEncPosition());
+		System.out.println(Robot.intake.intakeMotor.getOutputCurrent());
 	}
 
 	@Override
