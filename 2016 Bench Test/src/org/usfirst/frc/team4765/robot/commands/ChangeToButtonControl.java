@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class FourBarToFullyRetracted extends Command
+public class ChangeToButtonControl extends Command
 {
 
-	public FourBarToFullyRetracted()
+	public ChangeToButtonControl()
 	{
 		requires(Robot.fourBar);
 	}
@@ -18,8 +18,7 @@ public class FourBarToFullyRetracted extends Command
 	// Called just before this Command runs the first time
 	protected void initialize()
 	{
-		System.out.println("executing FourBarToFullyRetracted");
-		Robot.fourBar.wench.set(200);
+		Robot.fourBar.disableManual();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -30,7 +29,7 @@ public class FourBarToFullyRetracted extends Command
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished()
 	{
-		return (true || Robot.fourBar.limitSwitch.get());
+		return true;
 	}
 
 	// Called once after isFinished returns true

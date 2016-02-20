@@ -1,20 +1,18 @@
 package org.usfirst.frc.team4765.robot;
 
 import org.usfirst.frc.team4765.robot.commands.CaptureBallAndRetract;
+import org.usfirst.frc.team4765.robot.commands.ChangeToButtonControl;
+import org.usfirst.frc.team4765.robot.commands.ChangeToManual;
 import org.usfirst.frc.team4765.robot.commands.FourBarToFullyRetracted;
 import org.usfirst.frc.team4765.robot.commands.FourBarToIntake;
 import org.usfirst.frc.team4765.robot.commands.FourBarToLowBar;
 import org.usfirst.frc.team4765.robot.commands.FourBarToLowest;
+import org.usfirst.frc.team4765.robot.commands.FourBarToOpJoy;
 import org.usfirst.frc.team4765.robot.commands.FourBarToThrottle;
-import org.usfirst.frc.team4765.robot.commands.MoveForwardTime;
 import org.usfirst.frc.team4765.robot.commands.ResetFourBar;
-import org.usfirst.frc.team4765.robot.commands.SafeMoveForward;
 import org.usfirst.frc.team4765.robot.commands.ejectBall;
-import org.usfirst.frc.team4765.robot.commands.ingestBall;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -32,6 +30,14 @@ public class OI
 	JoystickButton fourBarToIntakeBtn;
 	JoystickButton fourBarToThrottleBtn;
 	
+	JoystickButton fourBarToLowestBtn2;
+	JoystickButton fourBarToLowBarBtn2;
+	JoystickButton fourBarToFullyRetractedBtn2;
+	JoystickButton fourBarResetBtn2;
+	JoystickButton fourBarToIntakeBtn2;
+	
+	//JoystickButton changeFourBarModes;
+	
 	public OI(GenericHID... joysticks)
 	{
 		//moveForwardBtn = new JoystickButton(joysticks[0], 9);
@@ -40,27 +46,59 @@ public class OI
 		//safeMoveForwardBtn = new JoystickButton(joysticks[0], 10);
 		//safeMoveForwardBtn.whenPressed(new SafeMoveForward());
 		
-		fourBarToLowestBtn = new JoystickButton(joysticks[1], 1);
-		fourBarToLowestBtn.whenPressed(new FourBarToLowest());
 		
-		fourBarToLowBarBtn = new JoystickButton(joysticks[1], 2);
-		fourBarToLowBarBtn.whenPressed(new FourBarToLowBar());
+		fourBarResetBtn2    = new JoystickButton(joysticks[1], 9);
+		fourBarToIntakeBtn2 = new JoystickButton(joysticks[1], 11);
+		fourBarToLowestBtn2 = new JoystickButton(joysticks[1], 10);
+		fourBarToLowBarBtn2 = new JoystickButton(joysticks[1], 12);
+		fourBarToFullyRetractedBtn2 = new JoystickButton(joysticks[1], 8);
 		
-		fourBarToFullyRetractedBtn = new JoystickButton(joysticks[1], 3);
-		fourBarToFullyRetractedBtn.whenPressed(new FourBarToFullyRetracted());
-		
-		fourBarResetBtn = new JoystickButton(joysticks[0], 8);
-		fourBarResetBtn.whenPressed(new ResetFourBar());
-		
+		fourBarToLowestBtn = new JoystickButton(joysticks[0], 10);
+		fourBarToLowBarBtn = new JoystickButton(joysticks[0], 9);
 		fourBarToIntakeBtn = new JoystickButton(joysticks[0], 7);
-		fourBarToIntakeBtn.whenPressed(new FourBarToIntake());
+		fourBarResetBtn    = new JoystickButton(joysticks[0], 8);
+		fourBarToFullyRetractedBtn = new JoystickButton(joysticks[0], 11);
 		
-		fourBarToThrottleBtn = new JoystickButton(joysticks[0], 9);
-		fourBarToThrottleBtn.whenPressed(new FourBarToThrottle());
+		enableButtons();
+		
+		//changeFourBarModes = new JoystickButton(joysticks[1], 6);
+		//changeFourBarModes.whenPressed(new ChangeToManual());
+		//changeFourBarModes.whenReleased(new ChangeToButtonControl());
+		
 		
 		Robot.trigger.whenPressed(new CaptureBallAndRetract());
 		Robot.thumbBtn.whenPressed(new ejectBall());
 		
+	}
+	
+	public void disableButtons()
+	{
+		fourBarToLowestBtn.whenPressed(null);
+		fourBarToLowBarBtn.whenPressed(null);
+		fourBarToFullyRetractedBtn.whenPressed(null);
+		fourBarResetBtn.whenPressed(null);
+		fourBarToIntakeBtn.whenPressed(null);
+		
+		fourBarToLowestBtn2.whenPressed(null);
+		fourBarToLowBarBtn2.whenPressed(null);
+		fourBarToFullyRetractedBtn2.whenPressed(null);
+		fourBarResetBtn2.whenPressed(null);
+		fourBarToIntakeBtn2.whenPressed(null);
+	}
+	
+	public void enableButtons()
+	{
+		fourBarToLowestBtn.whenPressed(new FourBarToLowest());
+		fourBarToLowBarBtn.whenPressed(new FourBarToLowBar());
+		fourBarToFullyRetractedBtn.whenPressed(new FourBarToFullyRetracted());
+		fourBarResetBtn.whenPressed(new ResetFourBar());
+		fourBarToIntakeBtn.whenPressed(new FourBarToIntake());
+		
+		fourBarToLowestBtn2.whenPressed(new FourBarToLowest());
+		fourBarToLowBarBtn2.whenPressed(new FourBarToLowBar());
+		fourBarToFullyRetractedBtn2.whenPressed(new FourBarToFullyRetracted());
+		fourBarResetBtn2.whenPressed(new ResetFourBar());
+		fourBarToIntakeBtn2.whenPressed(new FourBarToIntake());
 	}
 	 
 	// // CREATING BUTTONS

@@ -19,12 +19,12 @@ public class FourBarToLowBar extends Command
 	protected void initialize()
 	{
 		System.out.println("executing FourBarToLowBar");
+		Robot.fourBar.wench.set(Robot.lowBarEncPos);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute()
 	{
-		Robot.fourBar.wench.set(Robot.lowBarEncPos);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

@@ -35,20 +35,21 @@ public class Robot extends IterativeRobot
 	public static final JoystickButton trigger = new JoystickButton(joystick, 1);
 	public static final JoystickButton thumbBtn = new JoystickButton(joystick, 2);
 	
-	public static final JoystickButton panelBtn7  = new JoystickButton(panelJoy, 7);
-	public static final JoystickButton panelBtn8  = new JoystickButton(panelJoy, 8);
-	public static final JoystickButton panelBtn9  = new JoystickButton(panelJoy, 9);
-	public static final JoystickButton panelBtn10 = new JoystickButton(panelJoy, 10);
-	public static final JoystickButton panelBtn11 = new JoystickButton(panelJoy, 11);
-	public static final JoystickButton panelBtn12 = new JoystickButton(panelJoy, 12);
+	public static final JoystickButton panelKnob1 = new JoystickButton(panelJoy, 1);
+	public static final JoystickButton panelKnob2 = new JoystickButton(panelJoy, 2);
+	public static final JoystickButton panelKnob3 = new JoystickButton(panelJoy, 3);
+	public static final JoystickButton panelKnob4 = new JoystickButton(panelJoy, 4);
+	public static final JoystickButton panelKnob5 = new JoystickButton(panelJoy, 5);
 	
 	public static boolean hasBeenReset = false;
 	public Command auton;
 	public Command init;
 	
 	public static int intakeEncPos = 9100;
-	public static int lowBarEncPos = 6393;
+	public static int lowBarEncPos = 5112;
+	public static int chevalEncPos = 11970;
 	public static int capturedBallEncPos = 4900;
+	public static int fullyRetractedEncPos = 0;
 	
 	// 660, should be 200
 	
@@ -94,7 +95,7 @@ public class Robot extends IterativeRobot
 	public void teleopPeriodic()
 	{
 		Scheduler.getInstance().run();
-		//System.out.println(Robot.fourBar.wench.getEncPosition());
+		System.out.println(Robot.fourBar.wench.getEncPosition());
 		System.out.println(Robot.intake.intakeMotor.getOutputCurrent());
 	}
 
@@ -106,18 +107,16 @@ public class Robot extends IterativeRobot
 	
 	public int readAutonConfig()
 	{
-		if(panelBtn7.get())
-			return 7;
-		else if(panelBtn8.get())
-			return 8;
-		else if(panelBtn9.get())
-			return 9;
-		else if(panelBtn10.get())
-			return 10;
-		else if(panelBtn11.get())
-			return 11;
-		else if(panelBtn12.get())
-			return 12;
+		if(panelKnob1.get())
+			return 1;
+		else if(panelKnob2.get())
+			return 2;
+		else if(panelKnob3.get())
+			return 3;
+		else if(panelKnob4.get())
+			return 4;
+		else if(panelKnob5.get())
+			return 5;
 		else
 			return 0;
 	}

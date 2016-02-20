@@ -36,29 +36,21 @@ public class Auton extends CommandGroup
 				System.out.println("case 1");
 				break;
 			
-			case 7:
-				System.out.println("case 7");
-				addSequential(new MoveForwardTime(2.0));
+			case 2:
+				System.out.println("case 2");
+				//addSequential(new MoveForwardTime(2.0));
 				break;
 			
-			case 8:
-				System.out.println("case 8");
+			case 3:
+				System.out.println("case 3");
 				break;
 				
-			case 9:
-				System.out.println("case 9");
+			case 4:
+				System.out.println("case 4");
 				break;
 				
-			case 10:
-				System.out.println("case 10");
-				break;
-				
-			case 11:
-				System.out.println("case 11");
-				break;
-				
-			case 12:
-				System.out.println("case 12");
+			case 5:
+				System.out.println("case 5");
 				break;
 			
 			default:

@@ -19,6 +19,7 @@ public class FourBarToLowest extends Command
 	protected void initialize()
 	{
 		System.out.println("executing FourBarToLowest");
+		Robot.fourBar.wench.set(Robot.chevalEncPos);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -29,7 +30,7 @@ public class FourBarToLowest extends Command
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished()
 	{
-		return (true || Robot.fourBar.limitSwitch.get());
+		return true;
 	}
 
 	// Called once after isFinished returns true

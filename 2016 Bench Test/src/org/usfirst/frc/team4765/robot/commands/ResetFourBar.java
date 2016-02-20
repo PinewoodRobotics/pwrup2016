@@ -37,12 +37,17 @@ public class ResetFourBar extends Command
 			Robot.fourBar.wench.set(0); // still in percentVBus
 			Robot.hasBeenReset = true;
 			Robot.fourBar.wench.changeControlMode(CANTalon.TalonControlMode.Position);
-			Robot.fourBar.wench.setPID(0.2, 0, 0);   
+			Robot.fourBar.wench.setPID(0.135, 0.000015, 50.0);
+			// 0.000125 oscillated a little bit, decently stable: (0.2, 0.00009375, 0.0);
+			//(0.17, 0.0000234375, 0.1 - 
+			//(0.15, 0.0000234375, 0.8); 
+			//Robot.fourBar.wench.setPID(0.085, 0.000015, 128.0);
+			
 			Robot.fourBar.wench.enableControl();
 			Robot.fourBar.wench.setSetpoint(200);
-			Robot.fourBar.wench.setVoltageRampRate(6);
+			Robot.fourBar.wench.setVoltageRampRate(8);
 			Robot.fourBar.wench.configNominalOutputVoltage(+0f, -0f);
-			Robot.fourBar.wench.configPeakOutputVoltage(+2f, -8f);
+			Robot.fourBar.wench.configPeakOutputVoltage(+3f, -8f);
 			return true;
 		}
 		else
