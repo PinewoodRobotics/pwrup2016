@@ -31,9 +31,9 @@ public class CaptureBallAndRetract extends CommandGroup
 		// arm.
 		addSequential(new FourBarToIntake());
 		addSequential(new IngestUntilBallCaptured());
-		addSequential(new SetIntakeMotor(-0.6));
+		//addSequential(new SetIntakeMotor(-0.6));
 		addSequential(new FourBarToCapturedBall());
-		addSequential(new Wait(0.5));
-		addSequential(new SetIntakeMotor(0.0));
+		addSequential(new Wait(3.0));
+		addSequential(new SetIntakeMotor(-0.3));
 	}
 }

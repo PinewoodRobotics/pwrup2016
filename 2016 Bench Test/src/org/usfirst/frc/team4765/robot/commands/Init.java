@@ -30,8 +30,11 @@ public class Init extends Command
 		
 		Robot.intake.intakeMotor.setFeedbackDevice(null);
 		
-		Robot.fourBar.wench.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
-		Robot.fourBar.wench.setControlMode(1); // position
+		//Robot.fourBar.wench.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
+		//Robot.fourBar.wench.setControlMode(1); // position
+		Robot.fourBar.winch.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		Robot.fourBar.winch.set(0);
+		Robot.fourBar.winch.disableControl();
 		
 		Robot.driveTrain.motor1.setControlMode(0);
 		Robot.driveTrain.motor2.setControlMode(0);
@@ -40,8 +43,10 @@ public class Init extends Command
 		Robot.driveTrain.motor4.setControlMode(5);
 		
 		Robot.driveTrain.motor3.set(1);
-		Robot.driveTrain.motor4.set(2);
+		Robot.driveTrain.motor3.enableControl();
 		
+		Robot.driveTrain.motor4.set(2);
+		Robot.driveTrain.motor4.enableControl();
 	}
 
 	// Called repeatedly when this Command is scheduled to run

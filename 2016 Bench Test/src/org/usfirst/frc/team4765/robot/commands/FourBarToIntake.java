@@ -26,7 +26,7 @@ public class FourBarToIntake extends Command
 	{
 		if(Robot.hasBeenReset)
 		{
-			Robot.fourBar.wench.setSetpoint(Robot.intakeEncPos);
+			Robot.fourBar.winch.setSetpoint(Robot.intakeEncPos);
 		}
 	}
 

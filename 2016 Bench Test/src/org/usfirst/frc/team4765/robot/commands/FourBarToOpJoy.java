@@ -25,7 +25,7 @@ public class FourBarToOpJoy extends Command
 	{
 		if(Robot.hasBeenReset)
 		{
-			Robot.fourBar.wench.setSetpoint((Robot.panelJoy.getY() + 1) / 2 * 15400);
+			Robot.fourBar.winch.setSetpoint((Robot.panelJoy.getY() + 1) / 2 * 15400);
 		}
 	}
 

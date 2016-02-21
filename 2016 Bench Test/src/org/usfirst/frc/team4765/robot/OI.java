@@ -79,11 +79,11 @@ public class OI
 		fourBarResetBtn.whenPressed(null);
 		fourBarToIntakeBtn.whenPressed(null);
 		
-		fourBarToLowestBtn2.whenPressed(null);
-		fourBarToLowBarBtn2.whenPressed(null);
-		fourBarToFullyRetractedBtn2.whenPressed(null);
-		fourBarResetBtn2.whenPressed(null);
-		fourBarToIntakeBtn2.whenPressed(null);
+		//fourBarToLowestBtn2.whenPressed(null);
+		//fourBarToLowBarBtn2.whenPressed(null);
+		//fourBarToFullyRetractedBtn2.whenPressed(null);
+		//fourBarResetBtn2.whenPressed(null);
+		//fourBarToIntakeBtn2.whenPressed(null);
 	}
 	
 	public void enableButtons()
@@ -94,11 +94,11 @@ public class OI
 		fourBarResetBtn.whenPressed(new ResetFourBar());
 		fourBarToIntakeBtn.whenPressed(new FourBarToIntake());
 		
-		fourBarToLowestBtn2.whenPressed(new FourBarToLowest());
-		fourBarToLowBarBtn2.whenPressed(new FourBarToLowBar());
-		fourBarToFullyRetractedBtn2.whenPressed(new FourBarToFullyRetracted());
-		fourBarResetBtn2.whenPressed(new ResetFourBar());
-		fourBarToIntakeBtn2.whenPressed(new FourBarToIntake());
+		//fourBarToLowestBtn2.whenPressed(new FourBarToLowest());
+		//fourBarToLowBarBtn2.whenPressed(new FourBarToLowBar());
+		//fourBarToFullyRetractedBtn2.whenPressed(new FourBarToFullyRetracted());
+		//fourBarResetBtn2.whenPressed(new ResetFourBar());
+		//fourBarToIntakeBtn2.whenPressed(new FourBarToIntake());
 	}
 	 
 	// // CREATING BUTTONS

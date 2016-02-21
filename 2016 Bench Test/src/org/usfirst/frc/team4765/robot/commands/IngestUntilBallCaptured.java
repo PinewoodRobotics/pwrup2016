@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class IngestUntilBallCaptured extends Command
 {
 	boolean currentLogged = false;
-	double startOfStall;
+	double startOfStall = 0.0;
 
 	public IngestUntilBallCaptured()
 	{
@@ -22,6 +22,7 @@ public class IngestUntilBallCaptured extends Command
 	// Called just before this Command runs the first time
 	protected void initialize()
 	{
+		Robot.intake.intakeMotor.set(-0.5);
 		System.out.println(System.currentTimeMillis());
 		System.out.println("IngestUntilBallCaptured");
 	}
@@ -29,7 +30,6 @@ public class IngestUntilBallCaptured extends Command
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute()
 	{	
-		Robot.intake.intakeMotor.set(-0.5);
 		if(Robot.intake.intakeMotor.getOutputCurrent() < 7.5)
 		{
 			startOfStall = timeSinceInitialized();
@@ -39,7 +39,7 @@ public class IngestUntilBallCaptured extends Command
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished()
 	{
-		return ((Math.abs(timeSinceInitialized() - startOfStall) > 0.75));
+		return (timeSinceInitialized() - startOfStall > 0.75);
 	}
 
 	// Called once after isFinished returns true

@@ -19,7 +19,7 @@ public class FourBarToFullyRetracted extends Command
 	protected void initialize()
 	{
 		System.out.println("executing FourBarToFullyRetracted");
-		Robot.fourBar.wench.set(200);
+		Robot.fourBar.winch.set(200);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class FourBar extends Subsystem
 {
-	public CANTalon wench = new CANTalon(5);
+	public CANTalon winch = new CANTalon(5);
 	
 	public DigitalInput limitSwitch = new DigitalInput(1);
 

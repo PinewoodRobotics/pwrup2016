@@ -95,8 +95,8 @@ public class Robot extends IterativeRobot
 	public void teleopPeriodic()
 	{
 		Scheduler.getInstance().run();
-		System.out.println(Robot.fourBar.wench.getEncPosition());
-		System.out.println(Robot.intake.intakeMotor.getOutputCurrent());
+		//System.out.println(Robot.fourBar.wench.getEncPosition());
+		System.out.println("intake current: " + Robot.intake.intakeMotor.getOutputCurrent());
 	}
 
 	@Override

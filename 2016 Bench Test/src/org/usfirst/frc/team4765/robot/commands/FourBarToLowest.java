@@ -19,7 +19,7 @@ public class FourBarToLowest extends Command
 	protected void initialize()
 	{
 		System.out.println("executing FourBarToLowest");
-		Robot.fourBar.wench.set(Robot.chevalEncPos);
+		Robot.fourBar.winch.set(Robot.chevalEncPos);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

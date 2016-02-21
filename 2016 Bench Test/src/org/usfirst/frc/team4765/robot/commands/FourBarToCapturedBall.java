@@ -27,7 +27,7 @@ public class FourBarToCapturedBall extends Command
 	{
 		if(Robot.hasBeenReset)
 		{
-			Robot.fourBar.wench.setSetpoint(Robot.capturedBallEncPos);
+			Robot.fourBar.winch.setSetpoint(Robot.capturedBallEncPos);
 		}
 	}
 

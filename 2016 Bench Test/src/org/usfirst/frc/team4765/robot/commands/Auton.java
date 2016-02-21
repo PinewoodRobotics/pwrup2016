@@ -33,7 +33,11 @@ public class Auton extends CommandGroup
 				break;
 			
 			case 1:
+				// Move until wall is hit
 				System.out.println("case 1");
+				addSequential(new Init());
+				addSequential(new ResetFourBar());
+				addSequential(new MoveForwardTime(2.0));
 				break;
 			
 			case 2:
