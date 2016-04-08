@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4765.robot.commands.Auton;
 import org.usfirst.frc.team4765.robot.commands.Init;
 import org.usfirst.frc.team4765.robot.commands.MoveBackward;
-import org.usfirst.frc.team4765.robot.commands.MoveForwardTime;
+import org.usfirst.frc.team4765.robot.commands.MoveForwardThrottleTime;
 import org.usfirst.frc.team4765.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4765.robot.subsystems.FourBar;
 import org.usfirst.frc.team4765.robot.subsystems.Intake;
@@ -45,11 +45,11 @@ public class Robot extends IterativeRobot
 	public Command auton;
 	public Command init;
 	
-	public static int intakeEncPos = 9100;
-	public static int lowBarEncPos = 5112;
+	public static int intakeEncPos = 9750;
+	public static int lowBarEncPos = 5750;
 	public static int chevalEncPos = 11970;
 	public static int capturedBallEncPos = 4900;
-	public static int fullyRetractedEncPos = 0;
+	public static int fullyRetractedEncPos = 200;
 	
 	// 660, should be 200
 	
@@ -63,7 +63,7 @@ public class Robot extends IterativeRobot
 		auton = new Auton(readAutonConfig());
 		Scheduler.getInstance().add(auton);
 		
-		System.out.println(joystick.getThrottle());
+		//System.out.println(joystick.getThrottle());
 	}
 
 	@Override
@@ -96,7 +96,8 @@ public class Robot extends IterativeRobot
 	{
 		Scheduler.getInstance().run();
 		//System.out.println(Robot.fourBar.wench.getEncPosition());
-		System.out.println("intake current: " + Robot.intake.intakeMotor.getOutputCurrent());
+		//System.out.println("intake current: " + Robot.intake.intakeMotor.getOutputCurrent());
+		System.out.println("throttle: " + Robot.joystick.getThrottle());
 	}
 
 	@Override

@@ -96,12 +96,17 @@ public class DriveTrain extends Subsystem
 		double rightMotorSpeed = motorSpeeds[1];
 		
 		motor1.set(leftMotorSpeed * throttle);
+		motor3.set(leftMotorSpeed * throttle);
+		
 		motor2.set(rightMotorSpeed * throttle);
+		motor4.set(rightMotorSpeed * throttle);
 	}
 
 	public void stop()
 	{
 		motor1.set(0);
 		motor2.set(0);
+		motor3.set(0);
+		motor4.set(0);
 	}
 }

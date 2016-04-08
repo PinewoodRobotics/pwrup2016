@@ -8,7 +8,6 @@ import org.usfirst.frc.team4765.robot.commands.FourBarToIntake;
 import org.usfirst.frc.team4765.robot.commands.FourBarToLowBar;
 import org.usfirst.frc.team4765.robot.commands.FourBarToLowest;
 import org.usfirst.frc.team4765.robot.commands.FourBarToOpJoy;
-import org.usfirst.frc.team4765.robot.commands.FourBarToThrottle;
 import org.usfirst.frc.team4765.robot.commands.ResetFourBar;
 import org.usfirst.frc.team4765.robot.commands.ejectBall;
 
@@ -21,14 +20,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI
 {
-	//JoystickButton moveForwardBtn;
-	//JoystickButton safeMoveForwardBtn;
 	JoystickButton fourBarToLowestBtn;
 	JoystickButton fourBarToLowBarBtn;
 	JoystickButton fourBarToFullyRetractedBtn;
 	JoystickButton fourBarResetBtn;
 	JoystickButton fourBarToIntakeBtn;
-	JoystickButton fourBarToThrottleBtn;
 	
 	JoystickButton fourBarToLowestBtn2;
 	JoystickButton fourBarToLowBarBtn2;
@@ -36,17 +32,12 @@ public class OI
 	JoystickButton fourBarResetBtn2;
 	JoystickButton fourBarToIntakeBtn2;
 	
-	//JoystickButton changeFourBarModes;
+	public JoystickButton changeFourBarModes;
+	
+	// enable buttons one by one
 	
 	public OI(GenericHID... joysticks)
 	{
-		//moveForwardBtn = new JoystickButton(joysticks[0], 9);
-		//moveForwardBtn.whenPressed(new MoveForward());
-		
-		//safeMoveForwardBtn = new JoystickButton(joysticks[0], 10);
-		//safeMoveForwardBtn.whenPressed(new SafeMoveForward());
-		
-		
 		fourBarResetBtn2    = new JoystickButton(joysticks[1], 9);
 		fourBarToIntakeBtn2 = new JoystickButton(joysticks[1], 11);
 		fourBarToLowestBtn2 = new JoystickButton(joysticks[1], 10);
@@ -61,7 +52,7 @@ public class OI
 		
 		enableButtons();
 		
-		//changeFourBarModes = new JoystickButton(joysticks[1], 6);
+		changeFourBarModes = new JoystickButton(joysticks[1], 6);
 		//changeFourBarModes.whenPressed(new ChangeToManual());
 		//changeFourBarModes.whenReleased(new ChangeToButtonControl());
 		
@@ -79,11 +70,11 @@ public class OI
 		fourBarResetBtn.whenPressed(null);
 		fourBarToIntakeBtn.whenPressed(null);
 		
-		//fourBarToLowestBtn2.whenPressed(null);
-		//fourBarToLowBarBtn2.whenPressed(null);
-		//fourBarToFullyRetractedBtn2.whenPressed(null);
-		//fourBarResetBtn2.whenPressed(null);
-		//fourBarToIntakeBtn2.whenPressed(null);
+		fourBarToLowestBtn2.whenPressed(null);
+		fourBarToLowBarBtn2.whenPressed(null);
+		fourBarToFullyRetractedBtn2.whenPressed(null);
+		fourBarResetBtn2.whenPressed(null);
+		fourBarToIntakeBtn2.whenPressed(null);
 	}
 	
 	public void enableButtons()
@@ -94,11 +85,11 @@ public class OI
 		fourBarResetBtn.whenPressed(new ResetFourBar());
 		fourBarToIntakeBtn.whenPressed(new FourBarToIntake());
 		
-		//fourBarToLowestBtn2.whenPressed(new FourBarToLowest());
-		//fourBarToLowBarBtn2.whenPressed(new FourBarToLowBar());
-		//fourBarToFullyRetractedBtn2.whenPressed(new FourBarToFullyRetracted());
-		//fourBarResetBtn2.whenPressed(new ResetFourBar());
-		//fourBarToIntakeBtn2.whenPressed(new FourBarToIntake());
+		fourBarToLowestBtn2.whenPressed(new FourBarToLowest());
+		fourBarToLowBarBtn2.whenPressed(new FourBarToLowBar());
+		fourBarToFullyRetractedBtn2.whenPressed(new FourBarToFullyRetracted());
+		fourBarResetBtn2.whenPressed(new ResetFourBar());
+		fourBarToIntakeBtn2.whenPressed(new FourBarToIntake());
 	}
 	 
 	// // CREATING BUTTONS

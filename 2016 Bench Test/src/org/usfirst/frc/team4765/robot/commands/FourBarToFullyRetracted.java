@@ -18,7 +18,8 @@ public class FourBarToFullyRetracted extends Command
 	// Called just before this Command runs the first time
 	protected void initialize()
 	{
-		System.out.println("executing FourBarToFullyRetracted");
+		System.out.println(this.getClass().getName());
+		System.out.println(System.currentTimeMillis());
 		Robot.fourBar.winch.set(200);
 	}
 
@@ -30,7 +31,7 @@ public class FourBarToFullyRetracted extends Command
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished()
 	{
-		return (true || Robot.fourBar.limitSwitch.get());
+		return (true); // || Robot.fourBar.limitSwitch.get());
 	}
 
 	// Called once after isFinished returns true

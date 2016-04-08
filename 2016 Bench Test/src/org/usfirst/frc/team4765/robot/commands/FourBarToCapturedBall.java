@@ -18,8 +18,8 @@ public class FourBarToCapturedBall extends Command
 	// Called just before this Command runs the first time
 	protected void initialize()
 	{
+		System.out.println(this.getClass().getName());
 		System.out.println(System.currentTimeMillis());
-		System.out.println("FourBarToCapturedBall");
 	}
 
 	// Called repeatedly when this Command is scheduled to run

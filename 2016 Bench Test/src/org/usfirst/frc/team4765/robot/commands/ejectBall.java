@@ -10,14 +10,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ejectBall extends Command
 {
 
-	public ejectBall() {
-        // Use requires() here to declare subsystem dependencies
-        requires(Robot.intake);
-    }
+	public ejectBall()
+	{
+		// Use requires() here to declare subsystem dependencies
+		requires(Robot.intake);
+	}
 
 	// Called just before this Command runs the first time
 	protected void initialize()
 	{
+		System.out.println(this.getClass().getName());
+		System.out.println(System.currentTimeMillis());
 		Robot.intake.intakeMotor.set(0.0);
 	}
 

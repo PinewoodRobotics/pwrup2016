@@ -20,6 +20,8 @@ public class ResetFourBar extends Command
 	// Called just before this Command runs the first time
 	protected void initialize()
 	{
+		System.out.println(this.getClass().getName());
+		System.out.println(System.currentTimeMillis());
 		Robot.fourBar.winch.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		Robot.intake.intakeMotor.set(0);
 		Robot.fourBar.winch.set(-0.4);
@@ -32,7 +34,7 @@ public class ResetFourBar extends Command
 
 	protected boolean isFinished()
 	{
-		if((timeSinceInitialized() > 2.0) || (Robot.fourBar.limitSwitch.get()))
+		if (timeSinceInitialized() > 2.0)
 		{
 			Robot.fourBar.winch.setEncPosition(0);
 			System.out.println("LIMIT HIT");

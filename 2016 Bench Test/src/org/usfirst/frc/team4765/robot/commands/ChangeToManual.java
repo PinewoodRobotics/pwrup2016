@@ -18,6 +18,8 @@ public class ChangeToManual extends Command
 	// Called just before this Command runs the first time
 	protected void initialize()
 	{
+		System.out.println(this.getClass().getName());
+		System.out.println(System.currentTimeMillis());
 		Robot.fourBar.enableManual();
 	}
 

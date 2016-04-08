@@ -26,7 +26,7 @@ public class SafeMoveForward extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new MoveForwardTime(1.0));
+    	//addSequential(new MoveForwardThrottleTime(1.0));
     	addSequential(new WaitCommand(4));
     }
 }

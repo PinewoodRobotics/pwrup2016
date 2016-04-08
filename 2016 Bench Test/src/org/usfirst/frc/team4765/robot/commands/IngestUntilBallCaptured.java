@@ -23,8 +23,8 @@ public class IngestUntilBallCaptured extends Command
 	protected void initialize()
 	{
 		Robot.intake.intakeMotor.set(-0.5);
+		System.out.println(this.getClass().getName());
 		System.out.println(System.currentTimeMillis());
-		System.out.println("IngestUntilBallCaptured");
 	}
 
 	// Called repeatedly when this Command is scheduled to run
