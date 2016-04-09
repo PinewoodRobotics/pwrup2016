@@ -27,7 +27,7 @@ public class ejectBall extends Command
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute()
 	{
-		Robot.intake.intakeMotor.set(0.5);
+		Robot.intake.intakeMotor.set(1.0);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

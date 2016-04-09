@@ -47,7 +47,7 @@ public class Robot extends IterativeRobot
 	
 	public static int intakeEncPos = 9750;
 	public static int lowBarEncPos = 5750;
-	public static int chevalEncPos = 11970;
+	public static int chevalEncPos = 13970;
 	public static int capturedBallEncPos = 4900;
 	public static int fullyRetractedEncPos = 200;
 	

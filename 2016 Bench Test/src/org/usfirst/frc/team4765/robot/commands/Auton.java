@@ -34,10 +34,19 @@ public class Auton extends CommandGroup
 				System.out.println("case 1 DO NOTHING");
 				break;
 			
-			case 2:
+			case 2:				
+				
 				// Move until wall is hit
 				System.out.println("case 2 MOVE A BIT");
-				addSequential(new MoveForwardThrottleTime(0.1, 0.5));
+				addSequential(new MoveForwardThrottleTime(0.1, 1.0));
+				
+				
+				/*
+				// PORTCULLISS
+				addSequential(new FourBarToLowest());
+				addSequential(new WaitCommand(2));
+				addSequential(new MoveForwardThrottleTime(0.102, 3.0));
+				*/
 				break;
 			
 			case 3: 
@@ -55,8 +64,8 @@ public class Auton extends CommandGroup
 			case 5:
 				// LOW BAR
 				System.out.println("case 5 LOW BAR");
-				addSequential(new FourBarToLowBar());
-				addSequential(new WaitCommand(2));
+				addSequential(new FourBarToIntake());
+				addSequential(new WaitCommand(4));
 				addSequential(new MoveForwardThrottleTime(0.102, 3.0));
 				break;
 			
